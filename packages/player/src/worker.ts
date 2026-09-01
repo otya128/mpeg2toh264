@@ -685,11 +685,6 @@ class Playback {
       ) {
         converted = true;
         mark(id, "first-fragment");
-        // Where the leg actually opened, which is a better sample of the file
-        // than the probe that aimed it: this is the group of pictures the
-        // conversion begins at, not the byte the search stopped on.
-        const first = fragments.find((fragment) => fragment.kind === "media");
-        if (first) this.#record({ byte: source.offset, seconds: first.start });
       }
       this.#place(converter);
       if (!(await this.#deliver(leg, fragments))) return;
